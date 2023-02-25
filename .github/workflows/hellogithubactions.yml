@@ -1,0 +1,10 @@
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  a_simple_scripts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cat README.md
+      - run: echo "HELLO GITHUB ACTIONS"
