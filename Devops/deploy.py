@@ -11,20 +11,28 @@ import pathlib
 #     print(k)
 
 def get_changed_jobs(diff_file):
-    with open(diff_file,"r", errors='ignore') as f:
-        print(f.readlines())
+    out = []
+    with open(diff_file,"r") as f:
+        all_files_paths = f.readlines()
+        for file_path in all_files_paths:
+            if file_path.split("/")[0] == "databricks_notebook_jobs":
+                out.append(f'databricks_notebook_jobs/{file_path.split("/")[1]}')
+    return set(out)
 
 
-def process_diff(diff_file):
+def get_jsons(folder_list):
     job_json_dict = {}
-    with open(diff_file,"r", errors='ignore') as f:
-        for folder in f.readlines():
-            folder_path = pathlib.Path(folder)
-            job_json_dict[folder] = list(folder_path.glob("*.json"))
+    for folder in folder_list:
+        folder_path = pathlib.Path(folder)
+        job_json_dict[folder] = list(folder_path.glob("*.json"))
     return job_json_dict
 
 output = get_changed_jobs("diff.txt")
 
 print(output)
+
+output1 = get_jsons(output)
+
+print(output1)
 
 
