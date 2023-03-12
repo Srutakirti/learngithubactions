@@ -1,0 +1,4 @@
+{
+    "cluster" : "a",
+    "worker_nodes" : 9
+}
