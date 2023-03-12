@@ -1,4 +1,4 @@
 {
     "cluster" : "a",
-    "worker_nodes" : 10
+    "worker_nodes" : 11
 }

@@ -1,4 +1,5 @@
 import pathlib
+import json
 
 # p = pathlib.Path(__file__)
 
@@ -24,7 +25,9 @@ def get_jsons(folder_list):
     job_json_dict = {}
     for folder in folder_list:
         folder_path = pathlib.Path(folder)
-        job_json_dict[folder] = list(folder_path.glob("*.json"))
+        json_path = list(folder_path.glob("*.json"))[0]
+        with open(json_path,"r") as f:
+            job_json_dict[folder] = json.load(f)
     return job_json_dict
 
 output = get_changed_jobs("diff.txt")
