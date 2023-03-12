@@ -6,9 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-      - run: cat README.md
+      - run: git diff --name-only  head head~1 > diff.txt
       - run: echo "HELLO GITHUB ACTIONS"
-      - run: python my_script.py
+      - run: python Devops/deploy.py
