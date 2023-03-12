@@ -1,14 +1,14 @@
 import pathlib
 
-p = pathlib.Path(__file__)
+# p = pathlib.Path(__file__)
 
 
-x = pathlib.Path("databricks_notebook_jobs\data_validations")
+# x = pathlib.Path("databricks_notebook_jobs\data_validations")
 
-print(x)
+# print(x)
 
-for k in x.iterdir():
-    print(k)
+# for k in x.iterdir():
+#     print(k)
 
 def get_changed_jobs(diff_file):
     with open(diff_file,"r", errors='ignore') as f:
